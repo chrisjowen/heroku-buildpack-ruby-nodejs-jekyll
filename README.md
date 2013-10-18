@@ -39,6 +39,7 @@ Specify the versions of Node.js and npm your application requires using `package
 To list the available versions of Node.js and npm, see these manifests:
 
 http://heroku-buildpack-nodejs.s3.amazonaws.com/manifest.nodejs
+
 http://heroku-buildpack-nodejs.s3.amazonaws.com/manifest.npm
 
 Grunt Support
