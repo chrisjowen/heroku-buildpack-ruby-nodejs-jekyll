@@ -196,3 +196,6 @@ if [[ -n `find $BUILD_DIR -maxdepth 1 -iname grunt.js` ]] || [[ -n `find $BUILD_
 else
   echo "-----> No Gruntfile (grunt.js, Gruntfile.js, Gruntfile.coffee) found"
 fi
+
+# Run Post Compile for Ruby - build jekyll last
+/usr/bin/env ruby $LP_DIR/bin/post_compile_ruby $BUILD_DIR $CACHE_DIR
