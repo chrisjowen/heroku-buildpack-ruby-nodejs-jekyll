@@ -184,6 +184,10 @@ if [[ -n `find $BUILD_DIR -maxdepth 1 -iname grunt.js` ]] || [[ -n `find $BUILD_
   run_npm "install grunt-cli"
   run_npm "install grunt"
   echo "-----> Found Gruntfile, running grunt heroku:$NODE_ENV task"
+  if grep -q compass "$BUILD_DIR/Gemfile"; then
+    echo "installing compass"
+    gem install compass --user-install --no-rdoc --no-ri
+  fi
   echo "PATH is: $PATH"
   echo "Compass is: "
   which compass
