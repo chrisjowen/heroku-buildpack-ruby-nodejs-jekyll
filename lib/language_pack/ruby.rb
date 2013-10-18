@@ -82,6 +82,9 @@ class LanguagePack::Ruby < LanguagePack::Base
       generate_jekyll_site
     end
   end
+  
+  def post_compile
+  end
 
 private
 
