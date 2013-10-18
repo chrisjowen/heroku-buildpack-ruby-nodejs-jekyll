@@ -7,9 +7,9 @@ Check out [NPM](http://npmjs.org/), [GruntJS](http://gruntjs.com/) and [SCons](h
 What does it do?
 ----------------
 
-The buildpack will detect a ruby application following the default [Ruby Buildpack](https://github.com/heroku/heroku-buildpack-ruby)
-The buildpack will detect your app includes Node.js if it has the file `package.json` in the root.  It will use NPM to install your dependencies, and vendors a version of the Node.js runtime into your slug.  The `node_modules` directory will be cached between builds to allow for faster NPM install time.
-For Jekyll, you no longer need to pre-build the site or commit the _site build directory to your repo. This simplifies the deployment process and keeps the repo clean. 
+- it will detect a ruby application following the default [Ruby Buildpack](https://github.com/heroku/heroku-buildpack-ruby)
+- it will detect your app includes Node.js if it has the file `package.json` in the root.  It will use NPM to install your dependencies, and vendors a version of the Node.js runtime into your slug.  The `node_modules` directory will be cached between builds to allow for faster NPM install time.
+- For Jekyll, you no longer need to pre-build the site or commit the _site build directory to your repo. This simplifies the deployment process and keeps the repo clean. 
 
 
 Node.js and npm versions
