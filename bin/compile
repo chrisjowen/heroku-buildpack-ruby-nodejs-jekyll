@@ -44,12 +44,18 @@ function indent() {
 
 function run_npm() {
   command="$1"
-
+  
+  [ ! -z $VERBOSE ] && command="--verbose $command"
+  
   cd $BUILD_DIR
   HOME="$BUILD_DIR" $VENDORED_NODE/bin/node $VENDORED_NPM/cli.js $command 2>&1 | indent
 
   if [ "${PIPESTATUS[*]}" != "0 0" ]; then
     echo " !     Failed to $command dependencies with npm"
+    if [ ! -z $BUILDPACK_RETRY_VERBOSE ]; then
+      echo " ! Relaunching the command in verbose mode to help debugging"
+      run_npm "--verbose $command"
+    fi
     exit 1
   fi
 }
@@ -110,8 +116,8 @@ declare -A engine_versions
 declare -A engine_defaults
 declare -A engine_requests
 
-engine_defaults["node"]="0.4.7"
-engine_defaults["npm"]="1.0.106"
+engine_defaults["node"]="0.10.x"
+engine_defaults["npm"]="1.3.x"
 
 engine_versions["node"]=$(manifest_versions "nodejs")
 engine_requests["node"]=$(package_engine_version "node")
@@ -173,9 +179,12 @@ run_npm "install"
 run_npm "rebuild"
 echo "Dependencies installed" | indent
 
-if [ -f $BUILD_DIR/Gruntfile.js ] || [ -f $BUILD_DIR/Gruntfile.coffee ]; then
-  echo "-----> Running Grunt"
-  $BUILD_DIR/node_modules/.bin/grunt
+if [ -f $BUILD_DIR/grunt.js ] || [ -f $BUILD_DIR/Gruntfile.js ] || [ -f $BUILD_DIR/Gruntfile.coffee ]; then
+  # make sure that grunt and grunt-cli are installed locally
+  run_npm "install grunt-cli"
+  run_npm "install grunt"
+  echo "-----> Found Gruntfile, running grunt heroku:$NODE_ENV task"
+  $BUILD_DIR/node_modules/.bin/grunt heroku:$NODE_ENV
 else
-echo "-----> No Gruntfile.(js or coffee) found"
+  echo "-----> No Gruntfile (grunt.js, Gruntfile.js, Gruntfile.coffee) found"
 fi
