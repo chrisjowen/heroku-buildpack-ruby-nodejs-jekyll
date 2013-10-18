@@ -74,19 +74,22 @@ class LanguagePack::Ruby < LanguagePack::Base
     setup_language_pack_environment
     setup_profiled
     allow_git do
-      install_language_pack_gems
-      build_bundler
-      create_database_yml
-      install_binaries
-      run_assets_precompile_rake_task
-      generate_jekyll_site
+      #install_language_pack_gems
+      #build_bundler
+      #create_database_yml
+      #install_binaries
+      #run_assets_precompile_rake_task
+      #generate_jekyll_site
     end
   end
   
   def post_compile
     Dir.chdir(build_path)
     allow_git do
-      #build_bundler
+      install_language_pack_gems
+      build_bundler
+      create_database_yml
+      install_binaries
       run_assets_precompile_rake_task
       generate_jekyll_site
     end
