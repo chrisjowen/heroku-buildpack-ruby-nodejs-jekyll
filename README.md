@@ -7,8 +7,8 @@ Check out [NPM](http://npmjs.org/), [GruntJS](http://gruntjs.com/) and [SCons](h
 What does it do?
 ----------------
 
-- it will detect a ruby application following the default [Ruby Buildpack](https://github.com/heroku/heroku-buildpack-ruby)
-- it will detect your app includes Node.js if it has the file `package.json` in the root.  It will use NPM to install your dependencies, and vendors a version of the Node.js runtime into your slug.  The `node_modules` directory will be cached between builds to allow for faster NPM install time.
+- It will detect a ruby application following the default [Ruby Buildpack](https://github.com/heroku/heroku-buildpack-ruby)
+- It will detect your app includes Node.js if it has the file `package.json` in the root.  It will use NPM to install your dependencies, and vendors a version of the Node.js runtime into your slug.  The `node_modules` directory will be cached between builds to allow for faster NPM install time.
 - For [Jekyll](http://jekyllrb.com/), you no longer need to pre-build the site or commit the _site build directory to your repo. This simplifies the deployment process and keeps the repo clean. 
 
 Why do I care?
@@ -16,9 +16,11 @@ Why do I care?
 
 While Jekyll is cool all by itself, it is even cooler when you can use all the power and benefits of Ruby, Node, and Grunt to your hearts desire. Precompilation for coffeescript? Check. Ability to manage static resources? _Checkmate_. 
 
+
 Jekyll Auth
 -----------
-Do you need to setup oAuth support, and have a github organization? Cool, check out [Jekyll Auth](https://github.com/benbalter/jekyll-auth)
+
+Do you need to setup oAuth support, and have a github organization? Cool, check out [Jekyll Auth](https://github.com/benbalter/jekyll-auth).
 
 Node.js and npm versions
 ------------------------
