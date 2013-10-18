@@ -186,5 +186,7 @@ if [ -f $BUILD_DIR/grunt.js ] || [ -f $BUILD_DIR/Gruntfile.js ] || [ -f $BUILD_D
   echo "-----> Found Gruntfile, running grunt heroku:$NODE_ENV task"
   $BUILD_DIR/node_modules/.bin/grunt heroku:$NODE_ENV
 else
+  echo "---> Gruntfile missing? Path: $BUILD_DIR/Gruntfile.coffee"
+  ls -al $BUILD_DIR
   echo "-----> No Gruntfile (grunt.js, Gruntfile.js, Gruntfile.coffee) found"
 fi
