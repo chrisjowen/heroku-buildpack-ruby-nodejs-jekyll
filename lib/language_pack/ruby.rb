@@ -85,6 +85,11 @@ class LanguagePack::Ruby < LanguagePack::Base
   
   def post_compile
     Dir.chdir(build_path)
+    remove_vendor_bundle
+    install_ruby
+    install_jvm
+    setup_language_pack_environment
+    setup_profiled
     allow_git do
       install_language_pack_gems
       build_bundler
