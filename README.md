@@ -16,7 +16,9 @@ Why do I care?
 
 While Jekyll is cool all by itself, it is even cooler when you can use all the power and benefits of Ruby, Node, and Grunt to your hearts desire. Precompilation for coffeescript? Check. Ability to manage static resources? _Checkmate_. 
 
-
+Jekyll Auth
+-----------
+Do you need to setup oAuth support, and have a github organization? Cool, check out [Jekyll Auth](https://github.com/benbalter/jekyll-auth)
 
 Node.js and npm versions
 ------------------------
