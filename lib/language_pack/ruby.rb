@@ -84,7 +84,9 @@ class LanguagePack::Ruby < LanguagePack::Base
   end
   
   def post_compile
+    Dir.chdir(build_path)
     allow_git do
+      #build_bundler
       run_assets_precompile_rake_task
       generate_jekyll_site
     end
