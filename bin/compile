@@ -179,7 +179,7 @@ run_npm "install"
 run_npm "rebuild"
 echo "Dependencies installed" | indent
 
-if [ -f $BUILD_DIR/grunt.js ] || [ -f $BUILD_DIR/Gruntfile.js ] || [ -f $BUILD_DIR/Gruntfile.coffee ]; then
+if [[ -n `find $BUILD_DIR -maxdepth 1 -iname grunt.js` ]] || [[ -n `find $BUILD_DIR -maxdepth 1 -iname gruntfile.js` ]] || [[ -n `find $BUILD_DIR -maxdepth 1 -iname gruntfile.coffee` ]] ; then
   # make sure that grunt and grunt-cli are installed locally
   run_npm "install grunt-cli"
   run_npm "install grunt"
