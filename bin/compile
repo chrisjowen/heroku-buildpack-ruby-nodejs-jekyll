@@ -184,9 +184,11 @@ if [[ -n `find $BUILD_DIR -maxdepth 1 -iname grunt.js` ]] || [[ -n `find $BUILD_
   run_npm "install grunt-cli"
   run_npm "install grunt"
   echo "-----> Found Gruntfile, running grunt heroku:$NODE_ENV task"
+  echo "PATH is: $PATH"
+  echo "Compass is: "
+  which compass
+  gem list
   $BUILD_DIR/node_modules/.bin/grunt heroku:$NODE_ENV
 else
-  echo "---> Gruntfile missing? Path: $BUILD_DIR/Gruntfile.coffee"
-  ls -al $BUILD_DIR
   echo "-----> No Gruntfile (grunt.js, Gruntfile.js, Gruntfile.coffee) found"
 fi
